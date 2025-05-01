@@ -1,0 +1,13 @@
+SELECT c.Name, p.Name, ca.Reason
+FROM customer c 
+JOIN customer_plan cp ON c.Customer_ID = cp.Customer_ID
+JOIN plan p ON cp.Plan_ID = p.Plan_ID
+LEFT JOIN cancellation ca ON ca.Customer_ID = c.Customer_ID;
+
+SELECT c.Name, c.Phone_Number, ct.Date, ct.Duration, ct.Type, ct.Cost FROM customer c
+JOIN call_traffic ct ON c.Customer_ID = ct.Customer_ID
+ORDER BY ct.Date ASC;
+
+SELECT SUM(t.Amount) AS Total_Plan_Revenue, p.Name FROM Transaction t
+JOIN plan p ON t.Plan_ID = p.Plan_ID
+GROUP BY p.Plan_ID, p.Name;
